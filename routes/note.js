@@ -1,9 +1,25 @@
 const express = require('express');
 const router = express.Router();
 const noteController = require('../controllers/noteController');
+const { Note, Tag } = require('../app/models');
 
 // GET all notes
-router.get('/', noteController.getAllNotes);
+router.get('/', (req, res) => {
+    Note.findAll({
+        attributes: [
+            'id',
+            'note_text'
+        ],
+        include: [{
+            model: Tag,
+            attributes: ['id', 'tag_name'],
+            include: {
+                model: User,
+                attributes: ['username']
+            }
+        }]
+    })
+});
 
 // GET a single note by ID
 router.get('/:id', noteController.getNoteById);
