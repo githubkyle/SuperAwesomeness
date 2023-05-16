@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
-// Import routes
 const noteRoutes = require('./note');
+// Import routes
 const authRoutes = require('./authRoutes');
 
 // Middleware for note routes
