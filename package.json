@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "superawesomeness",
   "version": "1.0.0",
   "description": "group project 2",
@@ -28,3 +29,24 @@
     "sequelize": "^6.31.1"
   }
 }
+=======
+    "name": "your-project-name",
+    "version": "1.0.0",
+    "description": "Your project description",
+    "scripts": {
+      "start": "node index.js"
+    },
+    "dependencies": {
+      "express": "^4.17.1",
+      "express-handlebars": "^5.3.4",
+      "mysql2": "^2.3.1",
+      "sequelize": "^6.6.5",
+      "express-session": "^1.17.2",
+      "passport": "^0.5.2",
+      "passport-local": "^1.0.0",
+      "bcryptjs": "^2.4.3",
+      "dotenv": "^10.0.0"
+    }
+  }
+  
+>>>>>>> 32b4e9909714aa83b4c3f296beab1bcd9fccbba0
