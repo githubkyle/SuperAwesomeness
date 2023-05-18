@@ -1,1 +1,8 @@
-TEST
+{
+    "username": "your_mysql_username",
+    "password": "your_mysql_password",
+    "database": "your_database_name",
+    "host": "your_mysql_host",
+    "dialect": "mysql"
+  }
+  
