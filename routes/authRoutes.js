@@ -5,7 +5,7 @@ const User = require('../models/User');
 
 const router = express.Router();
 
-// Register route
+ // Register route
 router.post('/register', (req, res) => {
   const { name, email, password } = req.body;
 
@@ -47,8 +47,8 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
   res.json({ user: req.user });
 });
 
-// Logout route
-router.get('/logout', (req, res) => {
+// Protected route: Logout
+router.get('/logout', ensureAuthenticated, (req, res) => {
   req.logout();
   res.json({ message: 'Logout successful' });
 });
