@@ -1,37 +1,57 @@
 const express = require("express");
 const router = express.Router();
-const noteController = require("../controllers/noteController");
+// const noteController = require("../controllers/noteController");
 const { Note, Tag, User } = require("../app/models");
-const connection = require("./config/database");
+// const connection = require("./config/database");
 
 // GET all notes
+// router.get("/", async (req, res) => {
+//   try {
+//     var NPO = await Note.findAll({
+//       attributes: ["id", "note_text"],
+//       include: [
+//         {
+//           model: Tag,
+//           attributes: ["tag_name"],
+//           include: {
+//             model: User,
+//             attributes: ["username"]
+//           }
+//         }
+//       ]
+//     });
+//     res.status(200).json(NPO);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 router.get("/", async (req, res) => {
   try {
-    var NPO = await Note.findAll({
-      attributes: ["id", "note_text"],
-      include: [
-        {
-          model: Tag,
-          attributes: ["tag_name"],
-          include: {
-            model: User,
-            attributes: ["username"]
-          }
-        }
-      ]
-    });
-    res.status(200).json(NPO);
+    const notes = await Note.findAll();
+    res.status(200).json(notes);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
-router.get("/note/:id", (req, res) => {
-  var N = Note.findByPk(req);
-  res = N;
+router.get("/note/:id", async (req, res) => {
+  try {
+    var N = await Note.find({
+      attributes: ["id"],
+      where: {
+        id: req
+      }
+    });
+    res.status(200).json(N);
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
 });
 
-router.post("/note", (req, res) => {
+router.post("/note", async (req, res) => {
   Note.create({ note_text: req });
   if (err) throw err;
   res = console.log("Successfully created note");
@@ -43,7 +63,7 @@ router.put("/note/:id", (req, res) => {
   res = console.log("Successfully updated that note");
 });
 
-router.destroy("/note/:id", (req, res) => {
+router.delete("/note/:id", (req, res) => {
   Note.destroy(req);
   if (err) throw err;
   res = console.log("Successfully nuked that note");
@@ -61,4 +81,4 @@ router.destroy("/note/:id", (req, res) => {
 // // DELETE a note
 // router.delete("/:id", noteController.deleteNote);
 
-// module.exports = router;
+module.exports = router;
