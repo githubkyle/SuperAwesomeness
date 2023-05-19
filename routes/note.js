@@ -5,20 +5,25 @@ const { Note, Tag, User } = require("../app/models");
 const connection = require("./config/database");
 
 // GET all notes
-router.get("/", (req, res) => {
-  Note.findAll({
-    attributes: ["id", "note_text"],
-    include: [
-      {
-        model: Tag,
-        attributes: ["tag_name"],
-        include: {
-          model: User,
-          attributes: ["username"]
+router.get("/", async (req, res) => {
+  try {
+    var NPO = await Note.findAll({
+      attributes: ["id", "note_text"],
+      include: [
+        {
+          model: Tag,
+          attributes: ["tag_name"],
+          include: {
+            model: User,
+            attributes: ["username"]
+          }
         }
-      }
-    ]
-  });
+      ]
+    });
+    res.status(200).json(NPO);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.get("/note/:id", (req, res) => {
