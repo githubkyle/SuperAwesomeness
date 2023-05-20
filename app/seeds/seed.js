@@ -29,12 +29,15 @@ const tagData = [
 
 const noteData = [
   {
+    note_title: "Numbers",
     note_text: 12345678987654321
   },
   {
+    note_title: "Second test",
     note_text: "Here's another test note"
   },
   {
+    note_title: "Third test",
     note_text: "And the last of these three notes"
   }
 ];
