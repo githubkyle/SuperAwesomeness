@@ -10,4 +10,6 @@ async function Newer() {
   console.log("Added new note!");
 }
 
+// Add giphy
+
 NewSaver.addEventListener("submit", Newer());

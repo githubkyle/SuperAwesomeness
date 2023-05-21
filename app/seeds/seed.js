@@ -12,11 +12,13 @@ const tagData = [
   },
   {
     id: 2,
-    tag_name: "Strange"
+    tag_name: "Strange",
+    note_id: 1
   },
   {
     id: 3,
-    tag_name: "Horror"
+    tag_name: "Horror",
+    note_id: 3
   },
   {
     id: 4,
@@ -24,7 +26,8 @@ const tagData = [
   },
   {
     id: 5,
-    tag_name: "Other"
+    tag_name: "Other",
+    note_id: 2
   }
 ];
 
