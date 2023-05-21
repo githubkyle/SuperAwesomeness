@@ -35,17 +35,20 @@ const noteData = [
   {
     note_title: "Numbers",
     note_text: 12345678987654321,
-    note_tag: 2
+    note_tag: 2,
+    note_gif: "testurl.com"
   },
   {
     note_title: "Second test",
     note_text: "Here's another test note",
-    note_tag: 5
+    note_tag: 5,
+    note_gif: "bigquiz.com"
   },
   {
     note_title: "Third test",
     note_text: "And the last of these three notes",
-    note_tag: 3
+    note_tag: 3,
+    note_gif: "anothertest.com"
   }
 ];
 const userData = [

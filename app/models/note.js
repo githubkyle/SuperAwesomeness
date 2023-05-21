@@ -20,6 +20,10 @@ Note.init(
       allowNull: false
     },
     note_tag: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    note_gif: {
       type: DataTypes.STRING,
       allowNull: true
     }
