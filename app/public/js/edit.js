@@ -10,20 +10,19 @@ let Editing = document.querySelector("#editedContent").value;
 let UpdatePush = document.querySelector("#update");
 let Destroyer = document.querySelector("#delete");
 let DestroyTitle = document.querySelector("#deleteTitle").value;
+let NewTag = document.querySelector("#editedTag").value;
 
 async function Pusher() {
-  let upping = await sequelize.query(
-    `UPDATE note SET note_text=${Editing} WHERE note_title=${TitleFinder}`
+  await sequelize.query(
+    `UPDATE note SET note_text='${Editing}', note_tag='${NewTag} WHERE note_title='${TitleFinder}'`
   );
   console.log("Updated that note!");
 }
 
-function Nuker() {
-  let nuking = sequelize.query(
-    `DELETE note FROM note WHERE note_title=${DestroyTitle}`
-  );
+async function Nuker() {
+  await sequelize.query(`DELETE FROM note WHERE note_title='${DestroyTitle}'`);
   console.log("Nuked that note!");
 }
 
-UpdatePush.addEventListener("submit", Pusher);
-Destroyer.addEventListener("submit", Nuker);
+UpdatePush.addEventListener("submit", Pusher());
+Destroyer.addEventListener("submit", Nuker());

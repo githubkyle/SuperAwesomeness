@@ -4,7 +4,7 @@
     <div class="card-body">
       <h3 class="card-title">{{note.title}}</h3>
       <h5>Posted on {{createdAt}}</h5>
-      <p class="card-text">{{note.content}}</p>
+      <p class="card-text">{{note.text}}</p>
     </div>
   </section>
 </section>
@@ -21,7 +21,8 @@
   <div id="updating-field"></div>
   <label for="editedContent">Content</label>
   <input id="editedContent" placeholder="Enter the new text of this note" />
-
+  <label>Tag</label>
+  <input id="editedTag" placeholder="Enter the new tag of this note" />
   </div>
   <button id="update">Update Post</button>
   <input type="text" id="deleteTitle" placeholder="Want to delete a note? Enter its title then click delete" />
@@ -30,4 +31,4 @@
   </div>
 </section>
 
-<script src="/app/public/script.js"></script>
+<script src="/app/public/edit.js"></script>

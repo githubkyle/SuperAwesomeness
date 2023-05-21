@@ -18,6 +18,10 @@ Note.init(
     note_text: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    note_tag: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   },
   {

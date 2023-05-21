@@ -1,8 +1,9 @@
 const { Sequelize } = require("sequelize");
 const sequelize = require("../../config/database"); // Change the import statement
 
-const Note = require("../models/Note");
-const Tag = require("../models/Tag");
+const Note = require("../models/note");
+const Tag = require("../models/tag");
+const User = require("../models/user");
 
 const tagData = [
   {
@@ -30,18 +31,27 @@ const tagData = [
 const noteData = [
   {
     note_title: "Numbers",
-    note_text: 12345678987654321
+    note_text: 12345678987654321,
+    note_tag: 2
   },
   {
     note_title: "Second test",
-    note_text: "Here's another test note"
+    note_text: "Here's another test note",
+    note_tag: 5
   },
   {
     note_title: "Third test",
-    note_text: "And the last of these three notes"
+    note_text: "And the last of these three notes",
+    note_tag: 3
   }
 ];
-
+const userData = [
+  {
+    username: "Joey",
+    email: "Joey@gmail.com",
+    password: 123
+  }
+];
 async function seed() {
   try {
     await sequelize.sync();
@@ -51,6 +61,9 @@ async function seed() {
 
     // Seed tags
     await Tag.bulkCreate(tagData);
+
+    // Seed users
+    await User.bulkCreate(userData);
 
     console.log("Database seeding completed!");
   } catch (error) {
@@ -62,4 +75,4 @@ async function seed() {
 
 seed();
 
-module.exports = (tagData, noteData);
+module.exports = (tagData, noteData, userData);
