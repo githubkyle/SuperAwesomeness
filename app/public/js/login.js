@@ -4,6 +4,7 @@ let NewEmail = document.querySelector("#new-email").value;
 let Passer = document.querySelector("#new-pass").value;
 let Registration = document.querySelector("#signup-user");
 const bcrypt = require("bcrypt");
+let Logginer = document.querySelector("#loginU");
 
 async function RegisterUser() {
   try {
@@ -58,3 +59,4 @@ async function LoginUser() {
 }
 
 Registration.addEventListener("submit", RegisterUser());
+Logginer.addEventListener("submit", LoginUser());
