@@ -13,12 +13,12 @@
 <body>
     <header id="navheader" class="text-white">
         <section></section>
-        <a href="/">Home</a>
-        <a href="/dashboard">Dashboard</a>
+        <a href="../notes/index.hbs">Home</a>
+        <a href="../notes/edit.hbs">Dashboard</a>
         {{#if loggedIn}}
-        <a href="/api/users/logout">Logout</a>
+        <a href="../partials/logout.hbs">Logout</a>
         {{else}}
-        <a href="/login">Login</a>
+        <a href="../partials/login.hbs">Login</a>
         {{/if}}
     </header>
     <main>

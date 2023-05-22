@@ -1,7 +1,5 @@
 const router = require("express").Router();
 const { User } = require("../app/models");
-<<<<<<< HEAD
-=======
 
 // router.get("/", async (req, res) => {
 //   try {
@@ -33,7 +31,7 @@ router.get("/:id", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
->>>>>>> 61095cf92da97467ff033167c908f33aa058ec78
+
 
 router.post("/login", async (req, res) => {
   try {
