@@ -33,7 +33,8 @@ Note.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "note"
+    modelName: "note",
+    onDelete: "CASCADE"
   }
 );
 
