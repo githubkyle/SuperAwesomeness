@@ -11,9 +11,21 @@ Note.init(
       primaryKey: true,
       autoIncrement: true
     },
+    note_title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     note_text: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    note_tag: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    note_gif: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   },
   {

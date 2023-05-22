@@ -2,6 +2,7 @@ const { Model, DataTypes } = require("sequelize");
 
 const sequelize = require("../../config/database");
 
+// const note = require("../note.js");
 class Tag extends Model {}
 
 Tag.init(
@@ -13,6 +14,14 @@ Tag.init(
     },
     tag_name: {
       type: DataTypes.STRING
+    },
+    note_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "note",
+        key: "id"
+      },
+      allowNull: true
     }
   },
   {
@@ -23,5 +32,7 @@ Tag.init(
     modelName: "tag"
   }
 );
+
+// Tag.belongsTo(note, { foreignKey: "id" });
 
 module.exports = Tag;
