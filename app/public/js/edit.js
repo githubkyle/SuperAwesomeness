@@ -1,7 +1,7 @@
 const sequelize = require("../../config/database");
 let TitleFinder = document.querySelector("#editedTitle").value;
 let Updater = document.querySelector("#updating-field");
-let FoundNote = await sequelize.query(
+let FoundNote = await sequelize.get(
   `SELECT note FROM note WHERE note_title=${TitleFinder}`
 );
 Updater.innerHTML = FoundNote;
@@ -42,17 +42,17 @@ function fetchAGif() {
 
 async function Pusher() {
   if (EditGiffer) {
-    await sequelize.query(
+    await sequelize.put(
       `UPDATE note SET note_text='${Editing}', note_tag='${NewTag}, note_gif='${gifUrl}' WHERE note_title='${TitleFinder}'`
     );
     console.log("Updated that note!");
   } else if (NewTag) {
-    await sequelize.query(
+    await sequelize.put(
       `UPDATE note SET note_text='${Editing}', note_tag='${NewTag} WHERE note_title='${TitleFinder}'`
     );
     console.log("Updated that note!");
   } else {
-    await sequelize.query(
+    await sequelize.put(
       `UPDATE note SET note_text='${Editing}', WHERE note_title='${TitleFinder}'`
     );
     console.log("Updated that note!");
