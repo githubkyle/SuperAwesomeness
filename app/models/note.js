@@ -12,20 +12,16 @@ Note.init(
       autoIncrement: true
     },
     note_title: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING
     },
     note_text: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING
     },
     note_tag: {
-      type: DataTypes.INTEGER,
-      allowNull: true
+      type: DataTypes.INTEGER
     },
     note_gif: {
-      type: DataTypes.STRING,
-      allowNull: true
+      type: DataTypes.STRING
     }
   },
   {
