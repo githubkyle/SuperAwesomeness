@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Login</title>
+    <title>Login/Signup</title>
 </head>
+
 <body>
     <h1>Login</h1>
     {{#if ensureAuthenticated}}
-        <p>Welcome, {{username}}!</p>
-        <a href="/logout">Logout</a>
+    <p>Welcome, {{username}}!</p>
+    <a href="/logout">Logout</a>
     {{else}}
-        <form method="post" action="/login">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
+    <form method="post" action="/login">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
     {{/if}}
+    <h2>SignUp</h2>
+    <input id="new-user" placeholder="Enter a new username" />
+    <input id="new-email" placeholder="Enter an email address for this account" />
+    <input type="password" id="new-pass" placeholder="Enter a password" />
+    <input type="password" id="new-pass2" placeholder="Re-enter that password to verify it" />
+    <button id="signup-user">Register</button>
 </body>
+
 </html>
+<script src="/app/public/login.js"></script>

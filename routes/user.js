@@ -1,5 +1,39 @@
 const router = require("express").Router();
 const { User } = require("../app/models");
+<<<<<<< HEAD
+=======
+
+// router.get("/", async (req, res) => {
+//   try {
+//     const users = await User.findAll();
+//     res.status(200).json(users);
+//   } catch (err) {
+//     res.status(500).json(err);
+//     console.log(err);
+//   }
+// });
+
+router.get("/:id", async (req, res) => {
+  try {
+    const userId = req.params.id;
+
+    const user = await User.findOne({
+      where: {
+        id: userId
+      }
+    });
+
+    if (user) {
+      res.status(200).json(user);
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+>>>>>>> 61095cf92da97467ff033167c908f33aa058ec78
 
 router.post("/login", async (req, res) => {
   try {

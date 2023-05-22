@@ -1,10 +1,21 @@
-<h1></h1>
-<section class="card">
+<h1>Create a New Note</h1>
+{{!-- <section class="card">
   <a href="/blogs/{{id}}" class="card-body">
-    <h3 class="card-title">{{title}}</h3>
+    <h3 class="card-title">{{note.title}}</h3>
     <h4>Posted by {{user.username}} on {{createdAt}}</h4>
     <p class="card-text">{{content}}</p>
   </a>
-</section>
+</section> --}}
 
-<script src="/js/dashboard.js"></script>
+<div id="new-note">
+  <input id="new-note-title" placeholder="Give this note a title" />
+  <input id="new-note-text" placeholder="Note text" />
+  <input id"new-note-tag" placeholder="Enter the tag number you'd like to associate to this note" />
+  <input id="giphy-gif" placeholder="Search for a gif to add to your note" />
+  <button id="gifSearcher">Search Gif</button>
+  <div id="gifResult" placeholder="Your GIF here..."></div>
+  <label>If satisfied, hit create note to do just that</label>
+  <button id="save-new-note">Create Note</button>
+</div>
+
+<script src="/app/public/new.js"></script>
