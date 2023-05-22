@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/note/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const noteId = req.params.id;
 
@@ -37,7 +37,7 @@ router.get("/note/:id", async (req, res) => {
   }
 });
 
-router.post("/note", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const note = await Note.create({
       note_title: req.body.note_title,
@@ -52,7 +52,7 @@ router.post("/note", async (req, res) => {
   }
 });
 
-router.put("/note/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const noteId = req.params.id;
     const updatedNote = await Note.update(
@@ -75,7 +75,7 @@ router.put("/note/:id", async (req, res) => {
   }
 });
 
-router.delete("/note/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const noteTarget = req.params.id;
 
