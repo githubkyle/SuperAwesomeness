@@ -32,8 +32,6 @@ function fetchAGif() {
     });
 }
 
-fetchAGif();
-
 async function Newer() {
   sequelize.query(`INSERT INTO note(note_title, note_text, note_tag, note_gif)
       VALUES ('${Titler}','${Texter}','${Tagger}','${gifUrl}')`);
