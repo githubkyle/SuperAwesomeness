@@ -1,31 +1,34 @@
 <h1>Dashboard</h1>
 <section id="currentBlogUpdate">
   <section class="card">
-      <div class="card-body">
-        <h3 class="card-title">{{.title}}</h3> 
-        <h5>Posted on {{.createdAt}}</h5>
-        <p class="card-text">{{.content}}</p>
+    <div class="card-body">
+      <h3 class="card-title">{{note.title}}</h3>
+      <h5>Posted on {{createdAt}}</h5>
+      <p class="card-text">{{note.text}}</p>
     </div>
   </section>
 </section>
 
 <section id="editBlog" class="card text-center">
   <div class="card-body">
-  <h3 class="card-title">Edit Post</h3>
-  <form id="editedBlog">
-    <div class="card-text"></div>
+    <h3 class="card-title">Edit Post</h3>
+
+    <form id="editedBlog">
+      <div class="card-text"></div>
       <label for="editedTitle">Title</label><br>
-      <input type="text" id="editedTitle" placeholder="{{.title}}" value="{{.title}}">
-    </div>
-    <div class="card-text"></div>
-      <label for="editedContent">Content</label>
-    <textarea id="editedContent">{{.content}}</textarea>
-    <input id="hiddenBlogId" hidden="true" value="{{.id}}"></input>
-    </div>
-    <button id="update">Update Post</button>
-    <button id="delete">Delete Post</button>
-</form>
-</div>
+      <input type="text" id="editedTitle" placeholder="Enter the title of the note you wish to update">
+  </div>
+  <div id="updating-field"></div>
+  <label for="editedContent">Content</label>
+  <input id="editedContent" placeholder="Enter the new text of this note" />
+  <label>Tag</label>
+  <input id="editedTag" placeholder="Enter the new tag of this note" />
+  </div>
+  <button id="update">Update Post</button>
+  <input type="text" id="deleteTitle" placeholder="Want to delete a note? Enter its title then click delete" />
+  <button id="delete">Delete Post</button>
+  </form>
+  </div>
 </section>
 
-<script src="/js/updateDelete.js"></script>
+<script src="/app/public/edit.js"></script>

@@ -13,6 +13,13 @@ Tag.init(
     },
     tag_name: {
       type: DataTypes.STRING
+    },
+    note_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "note",
+        key: "id"
+      }
     }
   },
   {
@@ -23,5 +30,7 @@ Tag.init(
     modelName: "tag"
   }
 );
+
+Tag.belongsTo(note, { foreignKey: "id" });
 
 module.exports = Tag;
