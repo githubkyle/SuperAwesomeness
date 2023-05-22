@@ -1,30 +1,6 @@
 const express = require("express");
 const router = express.Router();
-// const noteController = require("../controllers/noteController");
-const { Note, Tag, User } = require("../app/models");
-// const connection = require("./config/database");
-
-// GET all notes
-// router.get("/", async (req, res) => {
-//   try {
-//     var NPO = await Note.findAll({
-//       attributes: ["id", "note_text"],
-//       include: [
-//         {
-//           model: Tag,
-//           attributes: ["tag_name"],
-//           include: {
-//             model: User,
-//             attributes: ["username"]
-//           }
-//         }
-//       ]
-//     });
-//     res.status(200).json(NPO);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+const { Note } = require("../app/models");
 
 router.get("/", async (req, res) => {
   try {
@@ -38,47 +14,72 @@ router.get("/", async (req, res) => {
 
 router.get("/note/:id", async (req, res) => {
   try {
-    var N = await Note.find({
-      attributes: ["id"],
+    const noteId = req.params.id;
+
+    const note = await Note.findOne({
       where: {
-        id: req
+        id: noteId
       }
     });
-    res.status(200).json(N);
+
+    if (note) {
+      res.status(200).json(note);
+    } else {
+      res.status(404).json({ message: "Note not found" });
+    }
   } catch (err) {
-    res.status(500).json(err);
-    console.log(err);
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
 router.post("/note", async (req, res) => {
-  Note.create({ note_text: req });
-  if (err) throw err;
-  res = console.log("Successfully created note");
+  try {
+    const note = await Note.create({
+      note_text: req.body.note_text
+    });
+    res.status(201).json({ message: "Successfully created note", note });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
-router.put("/note/:id", (req, res) => {
-  Note.update({ note_text: req });
-  if (err) throw err;
-  res = console.log("Successfully updated that note");
+router.put("/note/:id", async (req, res) => {
+  try {
+    const noteId = req.params.id;
+    const updatedNote = await Note.update(
+      {
+        note_text: req.body.note_text
+      },
+      {
+        where: {
+          id: noteId
+        }
+      }
+    );
+    res.status(200).json({ message: "Updated that note" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
-router.delete("/note/:id", (req, res) => {
-  Note.destroy(req);
-  if (err) throw err;
-  res = console.log("Successfully nuked that note");
+router.delete("/note/:id", async (req, res) => {
+  try {
+    const noteTarget = req.params.id;
+
+    await Note.destroy({
+      where: {
+        id: noteTarget
+      }
+    });
+
+    res.status(200).json({ message: "Note nuked" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
-
-// GET a single note by ID
-// router.get("/:id", noteController.getNoteById);
-
-// // POST a new note
-// router.post("/", noteController.createNote);
-
-// // PUT (update) an existing note
-// router.put("/:id", noteController.updateNote);
-
-// // DELETE a note
-// router.delete("/:id", noteController.deleteNote);
 
 module.exports = router;
