@@ -1,15 +1,12 @@
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
+
 const { Note } = require("../app/models");
-const bodyParserErrorHandler = require("express-body-parser-error-handler");
-const { urlencoded, json } = require("body-parser");
-const app = express();
-var bodyParser = require("body-parser");
 
 router.get("/", async (req, res) => {
   try {
-    const notes = await Note.findAll();
-    res.status(200).json(notes);
+    const notesData = await Note.findAll();
+    const notes = notesData.map(note => note.get({ plain: true }));
+    res.render("homepage", { notes });
   } catch (err) {
     res.status(500).json(err);
     console.log(err);
@@ -27,7 +24,7 @@ router.get("/:id", async (req, res) => {
     });
 
     if (note) {
-      res.status(200).json(note);
+      res.render("homepage", { note, logged_in: req.session.logged_in });
     } else {
       res.status(404).json({ message: "Note not found" });
     }
@@ -91,17 +88,5 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
-app.use(
-  bodyParser.urlencoded({
-    extended: false
-  })
-);
-
-app.use(bodyParser.json());
-
-// body parser error handler
-app.use(bodyParserErrorHandler());
-app.use(router);
 
 module.exports = router;
