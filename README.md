@@ -1,8 +1,6 @@
 # SuperAwesomenessNotesApp
 
-![App Image](add homepage image here)
-
-![Video](image for video)(video link)
+![App link](image.png)(https://fast-mesa-86925.herokuapp.com/)
 
 ![License Badge](https://shields.io/badge/license-MIT-blue)
 ## Table of Contents
