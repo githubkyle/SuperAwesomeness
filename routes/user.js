@@ -1,15 +1,15 @@
 const router = require("express").Router();
-const { User } = require("../app/models");
+const { User } = require("../app/models/user");
 
-// router.get("/", async (req, res) => {
-//   try {
-//     const users = await User.findAll();
-//     res.status(200).json(users);
-//   } catch (err) {
-//     res.status(500).json(err);
-//     console.log(err);
-//   }
-// });
+router.get("/", async (req, res) => {
+  try {
+    const users = await User.findAll();
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+});
 
 router.get("/:id", async (req, res) => {
   try {

@@ -1,15 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const { Note } = require("../app/models");
-const bodyParserErrorHandler = require("express-body-parser-error-handler");
-const { urlencoded, json } = require("body-parser");
+const { Note } = require("../app/models/note");
+
 const app = express();
-var bodyParser = require("body-parser");
 
 router.get("/", async (req, res) => {
   try {
     const notes = await Note.findAll();
-    res.status(200).json(notes);
+    res.render("main.hbs", { notes });
   } catch (err) {
     res.status(500).json(err);
     console.log(err);
@@ -92,16 +90,6 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-app.use(
-  bodyParser.urlencoded({
-    extended: false
-  })
-);
-
-app.use(bodyParser.json());
-
-// body parser error handler
-app.use(bodyParserErrorHandler());
 app.use(router);
 
 module.exports = router;
